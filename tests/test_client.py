@@ -17,6 +17,7 @@ from respx import MockRouter
 from pydantic import ValidationError
 
 from meorphis_test_32 import Petstore, AsyncPetstore, APIResponseValidationError
+from meorphis_test_32._types import Omit
 from meorphis_test_32._models import BaseModel, FinalRequestOptions
 from meorphis_test_32._constants import RAW_RESPONSE_HEADER
 from meorphis_test_32._exceptions import PetstoreError, APIStatusError, APITimeoutError, APIResponseValidationError
@@ -334,7 +335,8 @@ class TestPetstore:
         assert request.headers.get("api_key") == api_key
 
         with pytest.raises(PetstoreError):
-            client2 = Petstore(base_url=base_url, api_key=None, _strict_response_validation=True)
+            with update_env(**{"PETSTORE_API_KEY": Omit()}):
+                client2 = Petstore(base_url=base_url, api_key=None, _strict_response_validation=True)
             _ = client2
 
     def test_default_query_option(self) -> None:
@@ -1032,7 +1034,8 @@ class TestAsyncPetstore:
         assert request.headers.get("api_key") == api_key
 
         with pytest.raises(PetstoreError):
-            client2 = AsyncPetstore(base_url=base_url, api_key=None, _strict_response_validation=True)
+            with update_env(**{"PETSTORE_API_KEY": Omit()}):
+                client2 = AsyncPetstore(base_url=base_url, api_key=None, _strict_response_validation=True)
             _ = client2
 
     def test_default_query_option(self) -> None:
