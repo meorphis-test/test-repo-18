@@ -1,55 +1,62 @@
-# Accounts
+# Shared Types
+
+```python
+from meorphis_test_32.types import Order
+```
+
+# Pets
 
 Types:
 
-- <code><a href="./src/resources/accounts/accounts.ts">AccountConfiguration</a></code>
+```python
+from meorphis_test_32.types import APIResponse, Pet, PetFindByStatusResponse, PetFindByTagsResponse
+```
 
 Methods:
 
-- <code title="get /accounts/{account_token}">client.accounts.<a href="./src/resources/accounts/accounts.ts">retrieve</a>(accountToken) -> AccountConfiguration</code>
-- <code title="patch /accounts/{account_token}">client.accounts.<a href="./src/resources/accounts/accounts.ts">update</a>(accountToken, { ...params }) -> AccountConfiguration</code>
+- <code title="post /pet">client.pets.<a href="./src/meorphis_test_32/resources/pets.py">create</a>(\*\*<a href="src/meorphis_test_32/types/pet_create_params.py">params</a>) -> <a href="./src/meorphis_test_32/types/pet.py">Pet</a></code>
+- <code title="get /pet/{petId}">client.pets.<a href="./src/meorphis_test_32/resources/pets.py">retrieve</a>(pet_id) -> <a href="./src/meorphis_test_32/types/pet.py">Pet</a></code>
+- <code title="delete /pet/{petId}">client.pets.<a href="./src/meorphis_test_32/resources/pets.py">delete</a>(pet_id) -> None</code>
+- <code title="get /pet/findByStatus">client.pets.<a href="./src/meorphis_test_32/resources/pets.py">find_by_status</a>(\*\*<a href="src/meorphis_test_32/types/pet_find_by_status_params.py">params</a>) -> <a href="./src/meorphis_test_32/types/pet_find_by_status_response.py">PetFindByStatusResponse</a></code>
+- <code title="get /pet/findByTags">client.pets.<a href="./src/meorphis_test_32/resources/pets.py">find_by_tags</a>(\*\*<a href="src/meorphis_test_32/types/pet_find_by_tags_params.py">params</a>) -> <a href="./src/meorphis_test_32/types/pet_find_by_tags_response.py">PetFindByTagsResponse</a></code>
+- <code title="post /pet/{petId}">client.pets.<a href="./src/meorphis_test_32/resources/pets.py">update_by_id</a>(pet_id, \*\*<a href="src/meorphis_test_32/types/pet_update_by_id_params.py">params</a>) -> None</code>
+- <code title="put /pet">client.pets.<a href="./src/meorphis_test_32/resources/pets.py">updatededededed</a>(\*\*<a href="src/meorphis_test_32/types/pet_updatededededed_params.py">params</a>) -> <a href="./src/meorphis_test_32/types/pet.py">Pet</a></code>
+- <code title="post /pet/{petId}/uploadImage">client.pets.<a href="./src/meorphis_test_32/resources/pets.py">upload_image</a>(pet_id, \*\*<a href="src/meorphis_test_32/types/pet_upload_image_params.py">params</a>) -> <a href="./src/meorphis_test_32/types/api_response.py">APIResponse</a></code>
 
-## CreditConfiguration
+# Store
 
 Types:
 
-- <code><a href="./src/resources/accounts/credit-configuration.ts">BusinessAccount</a></code>
+```python
+from meorphis_test_32.types import StoreInventoryResponse
+```
 
 Methods:
 
-- <code title="get /accounts/{account_token}/credit_configuration">client.accounts.creditConfiguration.<a href="./src/resources/accounts/credit-configuration.ts">retrieve</a>(accountToken) -> BusinessAccount</code>
-- <code title="patch /accounts/{account_token}/credit_configuration">client.accounts.creditConfiguration.<a href="./src/resources/accounts/credit-configuration.ts">update</a>(accountToken, { ...params }) -> BusinessAccount</code>
+- <code title="post /store/order">client.store.<a href="./src/meorphis_test_32/resources/store/store.py">create_order</a>(\*\*<a href="src/meorphis_test_32/types/store_create_order_params.py">params</a>) -> <a href="./src/meorphis_test_32/types/shared/order.py">Order</a></code>
+- <code title="get /store/inventory">client.store.<a href="./src/meorphis_test_32/resources/store/store.py">inventory</a>() -> <a href="./src/meorphis_test_32/types/store_inventory_response.py">StoreInventoryResponse</a></code>
 
-# Cards
+## Order
+
+Methods:
+
+- <code title="get /store/order/{orderId}">client.store.order.<a href="./src/meorphis_test_32/resources/store/order.py">retrieve</a>(order_id) -> <a href="./src/meorphis_test_32/types/shared/order.py">Order</a></code>
+- <code title="delete /store/order/{orderId}">client.store.order.<a href="./src/meorphis_test_32/resources/store/order.py">delete_order</a>(order_id) -> None</code>
+
+# User
 
 Types:
 
-- <code><a href="./src/resources/cards/cards.ts">Card</a></code>
-- <code><a href="./src/resources/cards/cards.ts">CardProvisionResponse</a></code>
+```python
+from meorphis_test_32.types import User, UserLoginResponse
+```
 
 Methods:
 
-- <code title="post /cards">client.cards.<a href="./src/resources/cards/cards.ts">create</a>({ ...params }) -> Card</code>
-- <code title="get /cards/{card_token}">client.cards.<a href="./src/resources/cards/cards.ts">retrieve</a>(cardToken) -> Card</code>
-- <code title="patch /cards/{card_token}">client.cards.<a href="./src/resources/cards/cards.ts">update</a>(cardToken, { ...params }) -> Card</code>
-- <code title="post /cards/{card_token}/provision">client.cards.<a href="./src/resources/cards/cards.ts">provision</a>(cardToken, { ...params }) -> CardProvisionResponse</code>
-
-## FinancialTransactions
-
-Types:
-
-- <code><a href="./src/resources/cards/financial-transactions.ts">FinancialTransaction</a></code>
-
-Methods:
-
-- <code title="get /cards/{card_token}/financial_transactions/{financial_transaction_token}">client.cards.financialTransactions.<a href="./src/resources/cards/financial-transactions.ts">retrieve</a>(cardToken, financialTransactionToken) -> FinancialTransaction</code>
-
-# Status
-
-Types:
-
-- <code><a href="./src/resources/status.ts">StatusRetrieveResponse</a></code>
-
-Methods:
-
-- <code title="get /status">client.status.<a href="./src/resources/status.ts">retrieve</a>() -> StatusRetrieveResponse</code>
+- <code title="post /user">client.user.<a href="./src/meorphis_test_32/resources/user.py">create</a>(\*\*<a href="src/meorphis_test_32/types/user_create_params.py">params</a>) -> None</code>
+- <code title="get /user/{username}">client.user.<a href="./src/meorphis_test_32/resources/user.py">retrieve</a>(username) -> <a href="./src/meorphis_test_32/types/user.py">User</a></code>
+- <code title="put /user/{username}">client.user.<a href="./src/meorphis_test_32/resources/user.py">update</a>(existing_username, \*\*<a href="src/meorphis_test_32/types/user_update_params.py">params</a>) -> None</code>
+- <code title="delete /user/{username}">client.user.<a href="./src/meorphis_test_32/resources/user.py">delete</a>(username) -> None</code>
+- <code title="post /user/createWithList">client.user.<a href="./src/meorphis_test_32/resources/user.py">create_with_list</a>(\*\*<a href="src/meorphis_test_32/types/user_create_with_list_params.py">params</a>) -> <a href="./src/meorphis_test_32/types/user.py">User</a></code>
+- <code title="get /user/login">client.user.<a href="./src/meorphis_test_32/resources/user.py">login</a>(\*\*<a href="src/meorphis_test_32/types/user_login_params.py">params</a>) -> str</code>
+- <code title="get /user/logout">client.user.<a href="./src/meorphis_test_32/resources/user.py">logout</a>() -> None</code>
