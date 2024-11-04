@@ -44,10 +44,21 @@ class StoreResource(SyncAPIResource):
 
     @cached_property
     def with_raw_response(self) -> StoreResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/meorphis-test/test-repo-18#accessing-raw-response-data-eg-headers
+        """
         return StoreResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> StoreResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/meorphis-test/test-repo-18#with_streaming_response
+        """
         return StoreResourceWithStreamingResponse(self)
 
     def create_order(
@@ -126,10 +137,21 @@ class AsyncStoreResource(AsyncAPIResource):
 
     @cached_property
     def with_raw_response(self) -> AsyncStoreResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/meorphis-test/test-repo-18#accessing-raw-response-data-eg-headers
+        """
         return AsyncStoreResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncStoreResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/meorphis-test/test-repo-18#with_streaming_response
+        """
         return AsyncStoreResourceWithStreamingResponse(self)
 
     async def create_order(

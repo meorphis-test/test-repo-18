@@ -10,7 +10,6 @@ from ..types import (
     user_login_params,
     user_create_params,
     user_update_params,
-    user_create_with_list_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import (
@@ -35,10 +34,21 @@ __all__ = ["UserResource", "AsyncUserResource"]
 class UserResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> UserResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/meorphis-test/test-repo-18#accessing-raw-response-data-eg-headers
+        """
         return UserResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> UserResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/meorphis-test/test-repo-18#with_streaming_response
+        """
         return UserResourceWithStreamingResponse(self)
 
     def create(
@@ -244,7 +254,7 @@ class UserResource(SyncAPIResource):
         """
         return self._post(
             "/user/createWithList",
-            body=maybe_transform(items, user_create_with_list_params.UserCreateWithListParams),
+            body=maybe_transform(items, Iterable[UserParam]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -321,10 +331,21 @@ class UserResource(SyncAPIResource):
 class AsyncUserResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncUserResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/meorphis-test/test-repo-18#accessing-raw-response-data-eg-headers
+        """
         return AsyncUserResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncUserResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/meorphis-test/test-repo-18#with_streaming_response
+        """
         return AsyncUserResourceWithStreamingResponse(self)
 
     async def create(
@@ -530,7 +551,7 @@ class AsyncUserResource(AsyncAPIResource):
         """
         return await self._post(
             "/user/createWithList",
-            body=await async_maybe_transform(items, user_create_with_list_params.UserCreateWithListParams),
+            body=await async_maybe_transform(items, Iterable[UserParam]),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

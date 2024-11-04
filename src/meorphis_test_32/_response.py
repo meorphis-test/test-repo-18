@@ -192,6 +192,9 @@ class BaseAPIResponse(Generic[R]):
         if cast_to == float:
             return cast(R, float(response.text))
 
+        if cast_to == bool:
+            return cast(R, response.text.lower() == "true")
+
         origin = get_origin(cast_to) or cast_to
 
         if origin == APIResponse:
@@ -262,12 +265,10 @@ class BaseAPIResponse(Generic[R]):
 
 class APIResponse(BaseAPIResponse[R]):
     @overload
-    def parse(self, *, to: type[_T]) -> _T:
-        ...
+    def parse(self, *, to: type[_T]) -> _T: ...
 
     @overload
-    def parse(self) -> R:
-        ...
+    def parse(self) -> R: ...
 
     def parse(self, *, to: type[_T] | None = None) -> R | _T:
         """Returns the rich python representation of this response's data.
@@ -366,12 +367,10 @@ class APIResponse(BaseAPIResponse[R]):
 
 class AsyncAPIResponse(BaseAPIResponse[R]):
     @overload
-    async def parse(self, *, to: type[_T]) -> _T:
-        ...
+    async def parse(self, *, to: type[_T]) -> _T: ...
 
     @overload
-    async def parse(self) -> R:
-        ...
+    async def parse(self) -> R: ...
 
     async def parse(self, *, to: type[_T] | None = None) -> R | _T:
         """Returns the rich python representation of this response's data.
