@@ -28,8 +28,7 @@ import os
 from meorphis_test_32 import Petstore
 
 client = Petstore(
-    # This is the default and can be omitted
-    api_key=os.environ.get("PETSTORE_API_KEY"),
+    api_key=os.environ.get("PETSTORE_API_KEY"),  # This is the default and can be omitted
 )
 
 order = client.store.create_order(
@@ -55,8 +54,7 @@ import asyncio
 from meorphis_test_32 import AsyncPetstore
 
 client = AsyncPetstore(
-    # This is the default and can be omitted
-    api_key=os.environ.get("PETSTORE_API_KEY"),
+    api_key=os.environ.get("PETSTORE_API_KEY"),  # This is the default and can be omitted
 )
 
 
