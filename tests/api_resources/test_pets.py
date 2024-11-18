@@ -26,7 +26,7 @@ class TestPets:
     def test_method_create(self, client: Petstore) -> None:
         pet = client.pets.create(
             name="doggie",
-            photo_urls=["string", "string", "string"],
+            photo_urls=["string"],
         )
         assert_matches_type(Pet, pet, path=["response"])
 
@@ -34,7 +34,7 @@ class TestPets:
     def test_method_create_with_all_params(self, client: Petstore) -> None:
         pet = client.pets.create(
             name="doggie",
-            photo_urls=["string", "string", "string"],
+            photo_urls=["string"],
             id=10,
             category={
                 "id": 1,
@@ -45,15 +45,7 @@ class TestPets:
                 {
                     "id": 0,
                     "name": "name",
-                },
-                {
-                    "id": 0,
-                    "name": "name",
-                },
-                {
-                    "id": 0,
-                    "name": "name",
-                },
+                }
             ],
         )
         assert_matches_type(Pet, pet, path=["response"])
@@ -62,7 +54,7 @@ class TestPets:
     def test_raw_response_create(self, client: Petstore) -> None:
         response = client.pets.with_raw_response.create(
             name="doggie",
-            photo_urls=["string", "string", "string"],
+            photo_urls=["string"],
         )
 
         assert response.is_closed is True
@@ -74,7 +66,7 @@ class TestPets:
     def test_streaming_response_create(self, client: Petstore) -> None:
         with client.pets.with_streaming_response.create(
             name="doggie",
-            photo_urls=["string", "string", "string"],
+            photo_urls=["string"],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -186,7 +178,7 @@ class TestPets:
     @parametrize
     def test_method_find_by_tags_with_all_params(self, client: Petstore) -> None:
         pet = client.pets.find_by_tags(
-            tags=["string", "string", "string"],
+            tags=["string"],
         )
         assert_matches_type(PetFindByTagsResponse, pet, path=["response"])
 
@@ -254,7 +246,7 @@ class TestPets:
     def test_method_updatededededed(self, client: Petstore) -> None:
         pet = client.pets.updatededededed(
             name="doggie",
-            photo_urls=["string", "string", "string"],
+            photo_urls=["string"],
         )
         assert_matches_type(Pet, pet, path=["response"])
 
@@ -262,7 +254,7 @@ class TestPets:
     def test_method_updatededededed_with_all_params(self, client: Petstore) -> None:
         pet = client.pets.updatededededed(
             name="doggie",
-            photo_urls=["string", "string", "string"],
+            photo_urls=["string"],
             id=10,
             category={
                 "id": 1,
@@ -273,15 +265,7 @@ class TestPets:
                 {
                     "id": 0,
                     "name": "name",
-                },
-                {
-                    "id": 0,
-                    "name": "name",
-                },
-                {
-                    "id": 0,
-                    "name": "name",
-                },
+                }
             ],
         )
         assert_matches_type(Pet, pet, path=["response"])
@@ -290,7 +274,7 @@ class TestPets:
     def test_raw_response_updatededededed(self, client: Petstore) -> None:
         response = client.pets.with_raw_response.updatededededed(
             name="doggie",
-            photo_urls=["string", "string", "string"],
+            photo_urls=["string"],
         )
 
         assert response.is_closed is True
@@ -302,7 +286,7 @@ class TestPets:
     def test_streaming_response_updatededededed(self, client: Petstore) -> None:
         with client.pets.with_streaming_response.updatededededed(
             name="doggie",
-            photo_urls=["string", "string", "string"],
+            photo_urls=["string"],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -363,7 +347,7 @@ class TestAsyncPets:
     async def test_method_create(self, async_client: AsyncPetstore) -> None:
         pet = await async_client.pets.create(
             name="doggie",
-            photo_urls=["string", "string", "string"],
+            photo_urls=["string"],
         )
         assert_matches_type(Pet, pet, path=["response"])
 
@@ -371,7 +355,7 @@ class TestAsyncPets:
     async def test_method_create_with_all_params(self, async_client: AsyncPetstore) -> None:
         pet = await async_client.pets.create(
             name="doggie",
-            photo_urls=["string", "string", "string"],
+            photo_urls=["string"],
             id=10,
             category={
                 "id": 1,
@@ -382,15 +366,7 @@ class TestAsyncPets:
                 {
                     "id": 0,
                     "name": "name",
-                },
-                {
-                    "id": 0,
-                    "name": "name",
-                },
-                {
-                    "id": 0,
-                    "name": "name",
-                },
+                }
             ],
         )
         assert_matches_type(Pet, pet, path=["response"])
@@ -399,7 +375,7 @@ class TestAsyncPets:
     async def test_raw_response_create(self, async_client: AsyncPetstore) -> None:
         response = await async_client.pets.with_raw_response.create(
             name="doggie",
-            photo_urls=["string", "string", "string"],
+            photo_urls=["string"],
         )
 
         assert response.is_closed is True
@@ -411,7 +387,7 @@ class TestAsyncPets:
     async def test_streaming_response_create(self, async_client: AsyncPetstore) -> None:
         async with async_client.pets.with_streaming_response.create(
             name="doggie",
-            photo_urls=["string", "string", "string"],
+            photo_urls=["string"],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -523,7 +499,7 @@ class TestAsyncPets:
     @parametrize
     async def test_method_find_by_tags_with_all_params(self, async_client: AsyncPetstore) -> None:
         pet = await async_client.pets.find_by_tags(
-            tags=["string", "string", "string"],
+            tags=["string"],
         )
         assert_matches_type(PetFindByTagsResponse, pet, path=["response"])
 
@@ -591,7 +567,7 @@ class TestAsyncPets:
     async def test_method_updatededededed(self, async_client: AsyncPetstore) -> None:
         pet = await async_client.pets.updatededededed(
             name="doggie",
-            photo_urls=["string", "string", "string"],
+            photo_urls=["string"],
         )
         assert_matches_type(Pet, pet, path=["response"])
 
@@ -599,7 +575,7 @@ class TestAsyncPets:
     async def test_method_updatededededed_with_all_params(self, async_client: AsyncPetstore) -> None:
         pet = await async_client.pets.updatededededed(
             name="doggie",
-            photo_urls=["string", "string", "string"],
+            photo_urls=["string"],
             id=10,
             category={
                 "id": 1,
@@ -610,15 +586,7 @@ class TestAsyncPets:
                 {
                     "id": 0,
                     "name": "name",
-                },
-                {
-                    "id": 0,
-                    "name": "name",
-                },
-                {
-                    "id": 0,
-                    "name": "name",
-                },
+                }
             ],
         )
         assert_matches_type(Pet, pet, path=["response"])
@@ -627,7 +595,7 @@ class TestAsyncPets:
     async def test_raw_response_updatededededed(self, async_client: AsyncPetstore) -> None:
         response = await async_client.pets.with_raw_response.updatededededed(
             name="doggie",
-            photo_urls=["string", "string", "string"],
+            photo_urls=["string"],
         )
 
         assert response.is_closed is True
@@ -639,7 +607,7 @@ class TestAsyncPets:
     async def test_streaming_response_updatededededed(self, async_client: AsyncPetstore) -> None:
         async with async_client.pets.with_streaming_response.updatededededed(
             name="doggie",
-            photo_urls=["string", "string", "string"],
+            photo_urls=["string"],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
